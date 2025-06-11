@@ -20,5 +20,4 @@ fn initlizeOptions() -> String{
     return ssh_name;
 }
 
-async fn create_connection(ssh_name: &String) -> Session {
-}
+
