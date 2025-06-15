@@ -1,23 +1,27 @@
-use std::fs::File;
+mod initialization_protocol;
+mod file_manager;
+
 use std::mem::uninitialized;
 use std::io::Read;
-use std::path::Path;
-use openssh::{Session, KnownHosts};
+use std::io::{BufRead, BufReader};
+use ssh2::{Channel, Session};
 use std::error::Error;
+use crate::initialization_protocol::InitializationProtocol;
+
+struct Current_setup{
+    session: Session,
+    file_path: String,
+    text_manager: String,
+    username: String,
+    password: String,
+    terminal: Channel
+}
+
+struct File_data{
+    file_name: String,
+    file_extension: String,
+    file_path: String,
+}
 
 fn main() {
-    let ssh_name: String = initlizeOptions();
-
-
-    
 }
-
-fn initlizeOptions() -> String{
-    let mut options = File::open("options.txt").unwrap();
-    let mut ssh_name = String::new();
-
-    options.read_to_string(&mut ssh_name).unwrap();
-    return ssh_name;
-}
-
-
